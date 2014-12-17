@@ -35,7 +35,7 @@
     "production": {
       "name": "production",
       "urlStatics": "http://labhtml5qpltbackend.herokuapp.com/static",
-      "urlBackend": "http://labhtml5qpltbackend.herokuapp.com/"
+      "urlBackend": "http://labhtml5qpltbackend.herokuapp.com"
     }
   }
 }
