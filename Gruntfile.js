@@ -404,21 +404,7 @@ module.exports = function (grunt) {
           ENV: '<%= yeoman.ENV.production %>'
         }
       }
-    },  
-    injector: {
-      options: {},
-      bower_css: {
-        files: {
-          '<%= yeoman.app %>/index.html': [
-                'bower_components/Buttons/css/buttons.css',
-                'bower_components/angular-ui-grid/ui-grid.css',
-                '<%= yeoman.ENV.development.urlStatics %>/styles/modalites.css'
-          ]        
-        },
-          starttag: '<!-- injector:css -->',
-          endtag: '<!-- endinjector -->'
-      }
-    }   
+    }
   });
 
 
@@ -431,7 +417,6 @@ module.exports = function (grunt) {
       'clean:server',
       'ngconstant:development',
       'wiredep',
-      'injector',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
@@ -456,7 +441,6 @@ module.exports = function (grunt) {
     'clean:dist',
     'ngconstant:production',
     'wiredep',
-    'injector',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
