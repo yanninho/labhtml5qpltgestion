@@ -18,6 +18,7 @@ module.exports = function (grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
+    ENV: require('./bower.json').ENV,
     dist: 'dist'
   };
 
@@ -254,18 +255,18 @@ module.exports = function (grunt) {
     //     }
     //   }
     // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
-    // concat: {
-    //   dist: {}
-    // },
+    uglify: {
+      dist: {
+        files: {
+          '<%= yeoman.dist %>/scripts/scripts.js': [
+            '<%= yeoman.dist %>/scripts/scripts.js'
+          ]
+        }
+      }
+    },
+    concat: {
+      dist: {}
+    },
 
     imagemin: {
       dist: {
@@ -341,7 +342,8 @@ module.exports = function (grunt) {
             '*.html',
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
-            'fonts/{,*/}*.*'
+            'fonts/{,*/}*.*',
+            '.tmp/concat/**/*.js'
           ]
         }, {
           expand: true,
@@ -379,7 +381,44 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
-    }
+    },
+    ngconstant: {
+      // Options for all targets
+      options: {
+        name: 'config',
+      },
+      // Environment targets
+      development: {
+        options: {
+          dest: '<%= yeoman.app %>/scripts/services/config.service.js'
+        },
+        constants: {
+          ENV: '<%= yeoman.ENV.development %>'
+        }
+      },
+      production: {
+        options: {
+          dest: '<%= yeoman.app %>/scripts/services/config.service.js'
+        },
+        constants: {
+          ENV: '<%= yeoman.ENV.production %>'
+        }
+      }
+    },  
+    injector: {
+      options: {},
+      bower_css: {
+        files: {
+          '<%= yeoman.app %>/index.html': [
+                'bower_components/Buttons/css/buttons.css',
+                'bower_components/angular-ui-grid/ui-grid.css',
+                '<%= yeoman.ENV.development.urlStatics %>/styles/modalites.css'
+          ]        
+        },
+          starttag: '<!-- injector:css -->',
+          endtag: '<!-- endinjector -->'
+      }
+    }   
   });
 
 
@@ -390,7 +429,9 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'ngconstant:development',
       'wiredep',
+      'injector',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
@@ -413,7 +454,9 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'ngconstant:production',
     'wiredep',
+    'injector',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',

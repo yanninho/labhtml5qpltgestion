@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: restService', function () {
+describe('Service: Session', function () {
 
   // load the service's module
   beforeEach(module('quiprendlesticketsGestionApp'));
 
   // instantiate service
-  var restService;
-  beforeEach(inject(function (_restService_) {
-    restService = _restService_;
+  var Session;
+  beforeEach(inject(function (_Session_) {
+    Session = _Session_;
   }));
 
   it('should do something', function () {
-    expect(!!restService).toBe(true);
+    expect(!!Session).toBe(true);
   });
 
 });

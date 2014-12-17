@@ -1,0 +1,20 @@
+<div class="grid" ui-grid="signalements" ui-grid-selection ui-grid-resize-columns></div>
+
+<a href="#modal-text" class="button button-primary button-rounded">Désactiver sur la carte</a>
+
+<span class="{{message.message.type}}">{{message.message.texte}}</span>
+
+<section class="modal-signalement" id="modal-text" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+    <div class="modal-inner">
+        <header id="modal-label">
+        	<h2>Désactiver les magasins sélectionnés</h2>
+        </header>
+        <div class="modal-content">
+        	<p>Êtes-vous sur de vouloir désactiver les magasins sélectionnés ?</p>
+        </div>
+        <footer>
+			<a class="open-modal button button-primary button-rounded" role="button" title="Oui" ng-click="desactiverMagasins()" href="#!">Oui</a>
+			<a class="close-action button button-primary button-rounded" data-dismiss="modal" title="Non" href="#!">Non</a>
+        </footer>
+    </div>
+</section>
