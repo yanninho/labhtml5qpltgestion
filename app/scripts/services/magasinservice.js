@@ -19,25 +19,20 @@ angular.module('quiprendlesticketsGestionApp')
         marque : ''
     }
 
- 	var page = 1;
-	
-	var getData = function(data, page) {
-		var res = [];
-		for (var i = 0; i < page * 100 && i < data.features.length; ++i) {
-			res.push(data.features[i]);
-		}
-		magasins.data = res;
-	};
+    var sorts = {};
 
+ 	var page = 1;
+    var limit = 100;
+	
 	var getMagasins = function() {
         var promiseGetCommentaires = restService.getAppel({
             method: 'GET',
             url: ENV.urlBackend + '/magasins',
-            params: {filter : filter}
+            params: {filter : filter, limit : page*100, sorts : sorts}
         });
 
         promiseGetCommentaires.then(function (value) {
-            getData(value.data, page);  
+            magasins.data = value.data.features;
             ++page;               
         });  
         return promiseGetCommentaires;		
@@ -54,8 +49,12 @@ angular.module('quiprendlesticketsGestionApp')
         },
         setFilter: function(filterParams) {
             filter = filterParams;
+            page=1;
+        },
+        setSort: function(sortParams) {
+          sorts = sortParams;
+          page=1;  
         }
     };	
-
 
   });
