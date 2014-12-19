@@ -30,9 +30,9 @@
           <span class="title">Qui Prend Les Tickets</span>          
       </header>
       <nav class="nav" ng-controller="NavCtrl">
-        <a href="/magasins" class="button button-highlight button-rounded button-large">Magasins</a>
-        <a href="/nouveauxCommentaires" class="button button-highlight button-rounded button-large">Nouveaux commentaires</a>
-        <a href="/signalements" class="button button-highlight button-rounded button-large">Signalements</a>
+        <a href="/magasins" ng-show="currentUser" class="button button-highlight button-rounded button-large">Magasins</a>
+        <a href="/nouveauxCommentaires" ng-show="currentUser" class="button button-highlight button-rounded button-large">Nouveaux commentaires</a>
+        <a href="/signalements" ng-show="currentUser" class="button button-highlight button-rounded button-large">Signalements</a>
         <a href="/login" ng-hide="currentUser" class="button button-action button-rounded button-large">Se connecter</a>
         <a href="/signup" ng-hide="currentUser" class="button button-action button-rounded button-large">Créer un compte</a>
         <button ng-click="logout()" ng-show="currentUser" class="button button-caution button-rounded button-large">Bienvenue {{ currentUser.username }} (se déconnecter)</button>      

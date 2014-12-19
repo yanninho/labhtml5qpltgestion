@@ -11,7 +11,7 @@
 .splash, #header {
 	background-color: #14ebff;
 	@include filter-gradient(#14ebff, #2327ff, vertical); // IE6-9
-	@include background-image(linear-gradient(top, #14ebff 0%,#2361ff 51%,#2327ff 100%));
+	/*@include background-image(linear-gradient(top, #14ebff 0%,#2361ff 51%,#2327ff 100%));*/
 }
 
     .splash {
@@ -53,11 +53,12 @@
 	font-weight: 700;
 	font-size: 22px;
 	color: white;
-	background-color: #1420FF;
+	/*background-color: #1420FF;*/
+	background-color: #3887BE;
 	line-height: 46px;
-	text-shadow: 0 -0.08em 0 rgba(0, 0, 0, 0.5);
-	border-bottom: 1px solid black;
-	@include box-shadow(black 0px 0px 10px);
+	/*text-shadow: 0 -0.08em 0 rgba(0, 0, 0, 0.5);*/
+	/*border-bottom: 1px solid black;*/
+	/*@include box-shadow(black 0px 0px 10px);*/
 
 	.bt-infos {
 		@extend .bt-header;
