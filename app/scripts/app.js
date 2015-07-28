@@ -32,6 +32,10 @@ angular
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
     
     $routeProvider
+      .when('/magasins', {
+        templateUrl: 'views/magasins.html',
+        controller: 'MagasinsCtrl'
+      })    
       .when('/nouveauxCommentaires', {
         templateUrl: 'views/nouveauxcommentaires.html',
         controller: 'NouveauxcommentairesCtrl'
@@ -48,10 +52,6 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
-      .when('/magasins', {
-        templateUrl: 'views/magasins.html',
-        controller: 'MagasinsCtrl'
-      })
       .otherwise({
         redirectTo: '/'
       });
@@ -63,7 +63,7 @@ angular
     $rootScope.$watch('currentUser', function(currentUser) {
       // if no currentUser and on a page that requires authorization then try to update it
       // will trigger 401s if user does not have a valid session && (['/', '/login', '/logout', '/signup'].indexOf($location.path()) == -1 )
-      if (!currentUser && (['/login', '/logout', '/signup'].indexOf($location.path()) == -1)) {
+      if (!currentUser && (['/login', '/logout', '/signup'].indexOf($location.path()) === -1)) {
         Auth.currentUser();
       }
     });

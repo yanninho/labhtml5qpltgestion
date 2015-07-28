@@ -404,8 +404,35 @@ module.exports = function (grunt) {
           ENV: '<%= yeoman.ENV.production %>'
         }
       }
+    },
+    fontello: {
+    options: {
+      scss: true,
+      force: true,
+      styles: 'app/styles'
+    },
+    dist: {
+      options: {
+          fonts: 'dist/font',
+          dist: 'fontello' 
+      }
+    },
+    dev: {
+      options: {
+          fonts   : 'app/font',
+      }
     }
-  });
+  },
+  file_append: {
+      default_options: {
+        files: {
+          'app/styles/_fontello.scss': {
+            prepend: '@charset "UTF-8";\n'
+          }
+        }
+      }
+    }      
+});
 
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
@@ -415,6 +442,8 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'fontello:dev',
+      'file_append',
       'ngconstant:development',
       'wiredep',
       'concurrent:server',
@@ -439,6 +468,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'fontello:dist',
+    'file_append',
     'ngconstant:production',
     'wiredep',
     'useminPrepare',

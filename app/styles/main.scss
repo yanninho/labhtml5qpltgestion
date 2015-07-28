@@ -1,5 +1,8 @@
 @import 'compass';
 
+$qplt: #3887BE;
+$header-height: 46px;
+
 * {
   -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -151,11 +154,22 @@ body {
   white-space: normal !important;
 }
 
+
+/*  */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+
 @import "../../bower_components/css-modal/modal.scss";
 @import "../../bower_components/Buttons/scss/buttons.scss";
+@import '_fontello.scss';
 @import '_header.scss';
 @import '_modalites.scss';
 @import '_marques.scss';
 @import '_login_signup.scss';
 @import '_messages.scss';
+@import '_ui-grid.scss';
+@import '_ui-grid-style.scss';
+@import '_menu.scss';
 

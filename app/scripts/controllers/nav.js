@@ -9,7 +9,10 @@
  */
 angular.module('quiprendlesticketsGestionApp')
   .controller('NavCtrl', function ($scope, $location, Auth) {
+  	
+
     $scope.logout = function() {
+      $scope.menuactif = false;	
       Auth.logout(function(err) {
         if(!err) {
           $location.path('/login');

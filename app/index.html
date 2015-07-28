@@ -16,8 +16,6 @@
     <link rel="stylesheet" ng-href="{{ ENV.urlStatics }}/styles/modalites.css" />
     <link rel="stylesheet" ng-href="{{ ENV.urlStatics }}/styles/marques.css" />
 
-    <link rel="stylesheet" href="styles/ui-grid.css" />
-
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -26,17 +24,35 @@
 
     <!-- Add your site or application content here -->
     <div class="container_view">
+
       <header id="header">
-          <span class="title">Qui Prend Les Tickets</span>          
+          <span class="title">Qui Prend Les Tickets</span>    
       </header>
-      <nav class="nav" ng-controller="NavCtrl">
-        <a href="/magasins" ng-show="currentUser" class="button button-highlight button-rounded button-large">Magasins</a>
-        <a href="/nouveauxCommentaires" ng-show="currentUser" class="button button-highlight button-rounded button-large">Nouveaux commentaires</a>
-        <a href="/signalements" ng-show="currentUser" class="button button-highlight button-rounded button-large">Signalements</a>
-        <a href="/login" ng-hide="currentUser" class="button button-action button-rounded button-large">Se connecter</a>
-        <a href="/signup" ng-hide="currentUser" class="button button-action button-rounded button-large">Créer un compte</a>
-        <button ng-click="logout()" ng-show="currentUser" class="button button-caution button-rounded button-large">Bienvenue {{ currentUser.username }} (se déconnecter)</button>      
-      </nav>      
+
+      <div ng-controller="NavCtrl">
+        <a href="" class="bt-menu" ng-click="menuactif = !menuactif"><span class="icon-menu icon-large"></span></a>
+        <nav ng-class="{'cbp-spmenu-open' : menuactif}" class="navigation ng-cloak">
+            <a href="/login" ng-hide="currentUser" ng-click="menuactif = false">
+                <span class="icon-user"></span><span>Se connecter</span>
+            </a>
+            <a href="" ng-click="logout()" ng-show="currentUser" ng-click="menuactif = false">
+                <span class="icon-user"></span><span>Se déconnecter</span>
+            </a>      
+            <a href="/magasins" ng-show="currentUser" ng-click="menuactif = false">
+                <span class="icon-basket"></span><span>Magasins</span>
+            </a>
+            <a href="/nouveauxCommentaires" ng-show="currentUser" ng-click="menuactif = false">
+                <span class="icon-comment"></span><span>Nouveaux commentaires</span>
+            </a>
+            <a href="/signalements" ng-show="currentUser" ng-click="menuactif = false">
+                <span class="icon-flash"></span><span>Signalements</span>
+            </a>
+            <a href="/signup" ng-hide="currentUser" ng-click="menuactif = false">
+                <span class="icon-user-add"></span><span>Créer un compte</span>
+            </a>
+        </nav>
+    </div>
+
       <div ng-view="" class="view"></div>
     </div>
 

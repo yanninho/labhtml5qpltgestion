@@ -42,7 +42,7 @@
     }
 
 #header {
-	height: 46px;
+	height: $header-height;
 	margin: 0px;
 	padding: 0px;	
 	width: 100%;
@@ -53,12 +53,8 @@
 	font-weight: 700;
 	font-size: 22px;
 	color: white;
-	/*background-color: #1420FF;*/
-	background-color: #3887BE;
+	background-color: $qplt;
 	line-height: 46px;
-	/*text-shadow: 0 -0.08em 0 rgba(0, 0, 0, 0.5);*/
-	/*border-bottom: 1px solid black;*/
-	/*@include box-shadow(black 0px 0px 10px);*/
 
 	.bt-infos {
 		@extend .bt-header;
