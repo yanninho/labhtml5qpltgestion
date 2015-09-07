@@ -1,22 +1,23 @@
 'use strict';
 
-describe('Controller: LoginCtrl', function () {
+describe('Controller: MainCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('quiprendlesticketsGestionApp'));
+  beforeEach(module('qpltbackendApp'));
 
-  var LoginCtrl,
+  var MainCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    LoginCtrl = $controller('LoginCtrl', {
+    MainCtrl = $controller('MainCtrl', {
       $scope: scope
+      // place here mocked dependencies
     });
   }));
 
   it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+    expect(MainCtrl.awesomeThings.length).toBe(3);
   });
 });
