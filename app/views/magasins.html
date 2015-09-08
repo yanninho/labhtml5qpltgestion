@@ -1,0 +1,15 @@
+<md-list class="magasins" ng-if="result">
+  <md-subheader class="md-no-sticky">
+  	{{result.beginResult + 1}} à {{result.endResult + 1}} sur {{result.totalRecords}}
+  	<button ng-click="setPage('firstPage')">First</button>
+  	<button ng-click="setPage('previousPage')">Previous</button>
+  	<button ng-click="setPage('nextPage')">Next</button>
+  	<button ng-click="setPage('lastPage')">Last</button>
+  </md-subheader>
+  <md-list-item class="md-2-line" ng-repeat="magasin in result.data">
+	  <md-whiteframe class="magasin md-list-item-text md-whiteframe-z2">
+	  	<h3>{{ magasin.adresse }}</h3>
+	  	<p>{{ magasin.marque.nom }}</p>
+	  </md-whiteframe>          
+  </md-list-item>
+</md-list>

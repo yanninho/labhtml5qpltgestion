@@ -9,19 +9,16 @@
 
 module.exports = function (grunt) {
 
+  // Load grunt tasks automatically
+  require('load-grunt-tasks')(grunt);
+
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
-
-  // Automatically load required Grunt tasks
-  require('jit-grunt')(grunt, {
-    useminPrepare: 'grunt-usemin',
-    ngtemplates: 'grunt-angular-templates',
-    cdnify: 'grunt-google-cdn'
-  });
 
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
+    ENV: require('./bower.json').ENV,
     dist: 'dist'
   };
 
@@ -35,7 +32,7 @@ module.exports = function (grunt) {
     watch: {
       bower: {
         files: ['bower.json'],
-        tasks: ['wiredep']
+        tasks: ['wiredep','ngconstant:development']
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
@@ -70,10 +67,10 @@ module.exports = function (grunt) {
     // The actual grunt server settings
     connect: {
       options: {
-        port: 9000,
+        port: 9001,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost',
-        livereload: 35729
+        livereload: 35730
       },
       livereload: {
         options: {
@@ -426,7 +423,24 @@ module.exports = function (grunt) {
         'svgmin'
       ]
     },
-
+    ngconstant: {
+      // Options for all targets
+      options: {
+        name: 'config',
+        dest: '<%= yeoman.app %>/scripts/services/config.service.js'
+      },
+      // Environment targets
+      development: {
+        constants: {
+          ENV: '<%= yeoman.ENV.development %>'
+        }
+      },
+      production: {
+        constants: {
+          ENV: '<%= yeoman.ENV.production %>'
+        }
+      }
+    },
     // Test settings
     karma: {
       unit: {
@@ -445,6 +459,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+      'ngconstant:development',
       'concurrent:server',
       'autoprefixer:server',
       'connect:livereload',
@@ -469,6 +484,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
+    'ngconstant:production',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',

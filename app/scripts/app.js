@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name qpltbackendApp
+ * @name qpltgestion
  * @description
- * # qpltbackendApp
+ * # qpltgestion
  *
  * Main module of the application.
  */
 angular
-  .module('qpltbackendApp', [
+  .module('qpltgestion', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -17,7 +17,9 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'happyRestClient',
+    'config'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -30,6 +32,11 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
+      })
+      .when('/magasins', {
+        templateUrl: 'views/magasins.html',
+        controller: 'MagasinsCtrl',
+        controllerAs: 'magasins'
       })
       .otherwise({
         redirectTo: '/'

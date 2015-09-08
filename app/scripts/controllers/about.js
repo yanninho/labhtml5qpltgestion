@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name qpltbackendApp.controller:AboutCtrl
+ * @name qpltgestion.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the qpltbackendApp
+ * Controller of the qpltgestion
  */
-angular.module('qpltbackendApp')
+angular.module('qpltgestion')
   .controller('AboutCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
