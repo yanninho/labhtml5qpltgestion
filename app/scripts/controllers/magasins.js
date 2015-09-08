@@ -9,6 +9,7 @@
  */
 angular.module('qpltgestion')
   .controller('MagasinsCtrl', function ($scope, happyRestService, ENV) {
+    $scope.env = ENV;
     $scope.rangeNumber = 50;
   	$scope.loading = true;
   	var easyConfig = happyRestService.getEasyConfig();
@@ -18,7 +19,7 @@ angular.module('qpltgestion')
     easyConfig.range.push($scope.rangeNumber - 1);
     //fields
     easyConfig.fields.push('adresse');
-    easyConfig.fields.push('marque(nom)');
+    easyConfig.fields.push('marque');
   	
     var getMagasins = function() {
       var promiseGet = happyRestService.easyCall(easyConfig);

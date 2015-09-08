@@ -22,11 +22,13 @@
   "ENV": {
     "development": {
       "name": "development",
-      "urlBackend": "http://localhost:9000"
+      "urlBackend": "http://localhost:9000",
+      "logosPath" : "/static/images/logosMarques/"
     },
     "production": {
       "name": "production",
-      "urlBackend": "http://labhtml5qpltbackend.herokuapp.com"
+      "urlBackend": "http://labhtml5qpltbackend.herokuapp.com",
+      "logosPath" : "/static/images/logosMarques/"
     }
   }
 }
