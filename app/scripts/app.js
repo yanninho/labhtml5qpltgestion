@@ -19,7 +19,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'happyRestClient',
-    'config'
+    'config',
+    'ngMaterial'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -37,6 +38,11 @@ angular
         templateUrl: 'views/magasins.html',
         controller: 'MagasinsCtrl',
         controllerAs: 'magasins'
+      })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
       })
       .otherwise({
         redirectTo: '/'

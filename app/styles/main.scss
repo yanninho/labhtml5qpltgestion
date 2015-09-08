@@ -1,13 +1,41 @@
 // bower:scss
 // endbower
 
+html {
+  background-attachment: fixed;
+  background-image: url("../images/bg.jpg");
+  background-size: cover;	
+}
+
 body {
   padding: 0;
+  margin: 0;
+  background-color: transparent;
+}
+
+.toolbar {
+	position: fixed;
+}
+
+.container {
+
 }
 
 .magasins {
+	width: 70%;
+	margin: 0 auto;
+	padding-top: 70px;
+	background-color: white;
+
   .magasin {
     margin: 20px;
-    padding: 20px !important;    
+    padding: 20px !important;  
+    h3, p {
+    	line-height: 1.1em !important;
+    }
+    .map {
+    	text-align: right;
+    }
+    background-color: white;  
   }
 }

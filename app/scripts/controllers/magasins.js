@@ -20,6 +20,7 @@ angular.module('qpltgestion')
     //fields
     easyConfig.fields.push('adresse');
     easyConfig.fields.push('marque');
+    easyConfig.fields.push('location');
   	
     var getMagasins = function() {
       var promiseGet = happyRestService.easyCall(easyConfig);

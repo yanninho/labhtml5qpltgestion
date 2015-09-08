@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name qpltgestion.controller:AboutCtrl
+ * @name qpltgestion.controller:LoginCtrl
  * @description
- * # AboutCtrl
+ * # LoginCtrl
  * Controller of the qpltgestion
  */
 angular.module('qpltgestion')
-  .controller('AboutCtrl', function () {
+  .controller('LoginCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
