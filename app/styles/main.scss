@@ -1,6 +1,6 @@
 $mdi-css-prefix : "mdi";
 $mdi-font-size-base : "20";
-$mdi-font-path : "mdi/font";
+$mdi-font-path : "fonts";
 $mdi-version : "1";
 // bower:scss
 @import "mdi/scss/_core.scss";
@@ -25,6 +25,9 @@ body {
 
 .toolbar {
 	position: fixed;
+	.icon-menu {
+		font-size: 1.5em;
+	}
 }
 
 .container {

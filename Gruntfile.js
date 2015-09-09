@@ -381,6 +381,15 @@ module.exports = function (grunt) {
 
     // Copies remaining files to places other tasks can use
     copy: {
+      dev: {
+        files : [ {
+            expand: true,
+            cwd: 'bower_components/mdi',
+            dest: '.tmp/styles',
+            src: 'fonts/*'
+          }
+        ]
+      },
       dist: {
         files: [{
           expand: true,
@@ -399,6 +408,11 @@ module.exports = function (grunt) {
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
+        }, {
+            expand: true,
+            cwd: 'bower_components/mdi',
+            dest: '<%= yeoman.dist %>',
+            src: 'fonts/*'
         }]
       },
       styles: {
@@ -458,6 +472,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'copy:dev',
       'wiredep',
       'ngconstant:development',
       'concurrent:server',

@@ -1,16 +1,24 @@
-<div class="login" layout="column" layout-padding>
-    <md-icon class="icon"  md-svg-icon="images/ic_account_circle_48px.svg"></md-icon>
-    <form name="userForm">
-        <md-input-container>
-          <label>Identifiant</label>
-          <input ng-model="user.login">
-        </md-input-container>
-        <md-input-container>
-          <label>Mot de passe</label>
-          <input ng-model="user.password" type="password">
-        </md-input-container>
-    </form>  
+<div class="login" layout="column" layout-padding layout-margin>
+    <!-- <md-icon class="icon"  md-svg-icon="images/ic_account_circle_48px.svg"></md-icon> -->
+    <md-icon class="icon mdi" md-font-icon="mdi-account-circle"></md-icon>
+      <form name="userForm">
+          <md-input-container>
+            <label>Identifiant</label>
+            <input ng-model="user.login">
+          </md-input-container>
+          <md-input-container>
+            <label>Mot de passe</label>
+            <input ng-model="user.password" type="password">
+          </md-input-container>
+      </form>  
+
     <md-button class="md-raised md-primary">Se connecter</md-button>
-    <img src="images/fb-login.jpg">
+    <md-whiteframe class="easy-connect md-whiteframe-z2">
+       <p>Connectez-vous facilement avec :</p>
+       <div layout="row">     
+        <md-icon class="icons mdi google" md-font-icon="mdi-google"></md-icon>
+        <md-icon class="icons mdi facebook" md-font-icon="mdi-facebook"></md-icon>         
+       </div>     
+    </md-whiteframe>
 
 </div>

@@ -11,5 +11,19 @@
 		color: rgb(63, 81, 181);
 		width: 70px;
 		height: 70px;
+		font-size: 4em;
+		text-align: center;
+	}
+	.easy-connect {		
+			text-align: center;
+			.icons {
+				font-size: 1.3em;
+			}
+			.facebook {
+				color: #3b5998;
+			}
+			.google {
+				color: #D50F25;
+			}
 	}
 }
