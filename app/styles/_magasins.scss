@@ -1,0 +1,18 @@
+.magasins {
+	width: 70%;
+	margin: 0 auto;
+	padding-top: 70px;
+	background-color: white;
+
+  .magasin {
+    margin: 20px;
+    padding: 20px !important;  
+    h3, p {
+    	line-height: 1.1em !important;
+    }
+    .map {
+    	text-align: right;
+    }
+    background-color: white;  
+  }
+}
