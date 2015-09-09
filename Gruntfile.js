@@ -411,7 +411,7 @@ module.exports = function (grunt) {
         }, {
             expand: true,
             cwd: 'bower_components/mdi',
-            dest: '<%= yeoman.dist %>',
+            dest: '<%= yeoman.dist %>/styles',
             src: 'fonts/*'
         }]
       },
