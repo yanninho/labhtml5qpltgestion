@@ -1,11 +1,9 @@
 'use strict';
 
-var gzippo = require('gzippo');
 var express = require('express');
 var app = express();
 var modRewrite = require('connect-modrewrite');
 
-app.use(gzippo.staticGzip("" + __dirname + "/dist"));
 app.use(modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png|\\.jpg|\\.woff|\\.ttf$ /dist/index.html [L]']));
 app.listen(process.env.PORT || 5000);
 
