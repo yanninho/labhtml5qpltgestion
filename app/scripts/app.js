@@ -20,9 +20,17 @@ angular
     'ngTouch',
     'happyRestClient',
     'config',
-    'ngMaterial'
+    'ngMaterial',
+    'LocalStorageModule'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $httpProvider, $locationProvider, localStorageServiceProvider) {
+    localStorageServiceProvider
+      .setPrefix('qpltgestion')
+      .setStorageType('sessionStorage')
+      .setNotify(true, true);
+
+    $locationProvider.html5Mode(true).hashPrefix('!');
+    $httpProvider.interceptors.push('loginInterceptor');
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -44,7 +52,25 @@ angular
         controller: 'LoginCtrl',
         controllerAs: 'login'
       })
+      .when('/logged', {
+        templateUrl: 'views/logged.html',
+        controller: 'LoggedCtrl',
+        controllerAs: 'logged'
+      })
+      .when('/signup', {
+        templateUrl: 'views/signup.html',
+        controller: 'SignupCtrl',
+        controllerAs: 'signup'
+      })
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .run(function($rootScope, $location) {
+    $rootScope.$on('loginRequired', function() {
+        $location.path('/login');
+    });
+    $rootScope.$on('loggedSuccess', function() {
+        $location.path('/logged');
+    });
   });

@@ -3,8 +3,8 @@
     <md-icon class="icon mdi" md-font-icon="mdi-account-circle"></md-icon>
       <form name="userForm">
           <md-input-container>
-            <label>Identifiant</label>
-            <input ng-model="user.login">
+            <label>Adresse email</label>
+            <input ng-model="user.email">
           </md-input-container>
           <md-input-container>
             <label>Mot de passe</label>
@@ -13,11 +13,11 @@
       </form>  
 
     <md-button class="md-raised md-primary">Se connecter</md-button>
-    <md-whiteframe class="easy-connect md-whiteframe-z2">
+    <md-whiteframe class="easy-connect">
        <p>Connectez-vous facilement avec :</p>
        <div layout="row">     
-        <md-icon class="icons mdi google" md-font-icon="mdi-google"></md-icon>
-        <md-icon class="icons mdi facebook" md-font-icon="mdi-facebook"></md-icon>         
+       <md-button flex class="md-raised" ng-href="{{env.urlBackend}}/v2/auth/google"><md-icon class="icons mdi google" md-font-icon="mdi-google"></md-icon></md-button>
+       <md-button flex class="md-raised" ng-href="{{env.urlBackend}}/v2/auth/facebook"><md-icon class="icons mdi facebook" md-font-icon="mdi-facebook"></md-icon></md-button>         
        </div>     
     </md-whiteframe>
 

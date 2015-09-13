@@ -9,9 +9,6 @@
  */
 angular.module('qpltgestion')
   .controller('ToolbarCtrl', function ($scope,$mdSidenav,$mdUtil) {
-
-    $scope.toggleRight = buildToggler('right');
-
     /**
      * Build handler to open/close a SideNav; when animation finishes
      * report completion in console
@@ -27,5 +24,7 @@ angular.module('qpltgestion')
 
       return debounceFn;
     }
+
+    $scope.toggleRight = buildToggler('right');
 
   });

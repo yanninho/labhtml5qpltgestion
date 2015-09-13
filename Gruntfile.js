@@ -22,6 +22,7 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  var modRewrite = require('connect-modrewrite');
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -71,12 +72,13 @@ module.exports = function (grunt) {
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost',
         livereload: 35730
-      },
+      },     
       livereload: {
         options: {
           open: true,
           middleware: function (connect) {
             return [
+              modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png|\\.jpg|\\.woff|\\.ttf$ /index.html [L]']),
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',

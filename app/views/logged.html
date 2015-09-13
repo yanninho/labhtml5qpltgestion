@@ -1,0 +1,19 @@
+<div class="logged" layout="column" layout-padding layout-margin>
+	<div flex class="infos">
+		<img ng-src="{{session.getUser().photo}}" />
+		<md-icon  ng-if="!session.getUser().photo" class="icon mdi" md-font-icon="mdi-account-circle"></md-icon>
+		<h3>
+			{{session.getUser().firstName}} {{session.getUser().lastName}} 
+		</h3>
+		<h3>
+			{{session.getUser().displayName}} 
+		</h3>
+		<h4>
+			{{session.getUser().email}} 
+		</h4>
+	</div>
+	
+	
+</div>
+
+

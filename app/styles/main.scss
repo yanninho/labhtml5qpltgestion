@@ -34,5 +34,25 @@ body {
 
 }
 
+.encart {
+  width: 350px;
+  background-color: white;
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -175px;
+  border-radius: 10px;  
+  .icon {
+    color: rgb(63, 81, 181);
+    width: 70px;
+    height: 70px;
+    font-size: 4em;
+    text-align: center;
+  }  
+}
+
 @import "login";
+@import "logged";
+@import "signup";
 @import "magasins";

@@ -8,10 +8,6 @@
  * Controller of the qpltgestion
  */
 angular.module('qpltgestion')
-  .controller('LoginCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('LoginCtrl', function ($scope, ENV, $routeParams, session) {
+  	$scope.env = ENV;
   });

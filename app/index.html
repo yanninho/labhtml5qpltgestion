@@ -16,6 +16,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <base href="/">
   </head>
   <body ng-app="qpltgestion">
     <!--[if lte IE 8]>
@@ -53,6 +54,7 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -70,6 +72,10 @@
         <script src="scripts/services/config.service.js"></script>
         <script src="scripts/controllers/toolbar.js"></script>
         <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/services/logininterceptor.js"></script>
+        <script src="scripts/services/session.js"></script>
+        <script src="scripts/controllers/logged.js"></script>
+        <script src="scripts/controllers/signup.js"></script>
         <!-- endbuild -->
 </body>
 </html>

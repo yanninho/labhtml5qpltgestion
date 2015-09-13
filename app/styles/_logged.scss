@@ -1,0 +1,10 @@
+.logged {
+	@extend .encart;
+	.infos {
+		text-align: center;
+		line-height: 0.8em;
+		h4 {
+			color: grey;
+		}
+	}
+}
