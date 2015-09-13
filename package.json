@@ -42,7 +42,6 @@
   "dependencies": {
     "angular-sanitize": "^1.4.5",
     "express": "^4.13.3",
-    "express-rewrite": "0.0.4",
     "gzippo": "^0.2.0"
   }
 }
