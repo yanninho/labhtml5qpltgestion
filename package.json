@@ -41,7 +41,8 @@
   },
   "dependencies": {
     "angular-sanitize": "^1.4.5",
+    "connect-modrewrite": "^0.8.2",
     "express": "^4.13.3",
-    "connect-modrewrite": "^0.8.2"
+    "gzippo": "^0.2.0"
   }
 }
