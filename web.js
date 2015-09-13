@@ -2,7 +2,7 @@
 
 var express = require('express');
 var app = express();
-var compress = require('compression');
+var compression = require('compression');
 // var modRewrite = require('connect-modrewrite');
 
 app.use(compression());
