@@ -11,6 +11,8 @@ $mdi-version : "1";
 @import "mdi/scss/materialdesignicons.scss";
 // endbower
 
+$color-theme-default : rgb(63, 81, 181);
+
 html {
   background-attachment: fixed;
   background-image: url("../images/bg.jpg");
@@ -44,7 +46,7 @@ body {
   margin-left: -175px;
   border-radius: 10px;  
   .icon {
-    color: rgb(63, 81, 181);
+    color: $color-theme-default;
     width: 70px;
     height: 70px;
     font-size: 4em;
@@ -52,6 +54,7 @@ body {
   }  
 }
 
+@import "menu";
 @import "login";
 @import "logged";
 @import "signup";

@@ -14,7 +14,7 @@ angular.module('qpltgestion')
   			$location.path('/login');
   		}
   		else {
-  			if (session.getToken() === null || session.getToken() !== token) {
+  			if (session.getToken() === null || (angular.isDefined(token) && session.getToken() !== token)) {
 	  			session.setToken(token);
 				$http.get(ENV.urlBackend + '/v2/user/' + token).
 				then(

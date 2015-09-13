@@ -22,6 +22,9 @@ angular.module('qpltgestion')
       },
       setUser: function(newUser) {
         localStorageService.set('user',newUser);
+      },
+      clear: function() {
+        localStorageService.clearAll();
       }
     };
   });

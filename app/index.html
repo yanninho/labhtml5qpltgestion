@@ -29,18 +29,40 @@
                   <md-icon class="mdi icon-menu" md-font-icon="mdi-menu"></md-icon>
               </md-button>
               <h1>
-                  <span>Gestion des magasins</span>
+                  <span>Ma démo</span>
               </h1>
               <span flex=""></span>
           </div>
       </md-toolbar>
-      <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+      <md-sidenav class="md-sidenav-right md-whiteframe-z2 menu" md-component-id="right">
           <!-- menu -->
+          <md-toolbar class="header">
+              <div ng-if="session.getUser() !== null">
+                <img ng-src="{{session.getUser().photo}}">
+                <p>{{session.getUser().firstName}} {{session.getUser().lastName}}</p>
+                <p>{{session.getUser().displayName}}</p>
+                <p class="email">{{session.getUser().email}}</p>
+                <md-button class="md-fab logout-bt" ng-click="logout()" aria-label="se déconnecter">
+                  <md-icon class="mdi icon-menu" md-font-icon="mdi-logout"></md-icon>
+                </md-button>                
+              </div>
+              <div ng-if="session.getUser() === null" >
+                <md-button class="md-fab login-bt" ng-click="login()" aria-label="se connecter">
+                  <md-icon class="mdi icon-menu" md-font-icon="mdi-login"></md-icon>
+                </md-button>                           
+                <md-button class="md-fab signup-bt" ng-click="signup()" aria-label="se connecter">
+                  <md-icon class="mdi icon-menu" md-font-icon="mdi-plus"></md-icon>
+                </md-button>                           
+              </div>
+          </md-toolbar> 
           <md-content>
-              
+              <ul>
+                <li>
+                  <a ng-click="closeNav()" href="/magasins">Magasins</a>    
+                </li>
+              </ul>              
           </md-content>    
       </md-sidenav>        
-
     </div>
 
 
@@ -76,6 +98,7 @@
         <script src="scripts/services/session.js"></script>
         <script src="scripts/controllers/logged.js"></script>
         <script src="scripts/controllers/signup.js"></script>
+        <script src="scripts/directives/passwordverify.js"></script>
         <!-- endbuild -->
 </body>
 </html>

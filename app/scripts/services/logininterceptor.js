@@ -28,10 +28,7 @@ angular.module('qpltgestion')
 
       // optional method
       'response': function(response) {
-        console.log('====================')
         var route = $injector.get('$route')
-        console.log(route.current.params);
-        console.log('====================')
         // do something on success
         if (angular.isDefined(route.current.params.token)) {
           $rootScope.$emit('loggedSuccess');
@@ -41,7 +38,7 @@ angular.module('qpltgestion')
 
       // optional method
      'responseError': function(response) {
-        console.log('intercept responseError')
+        console.log(response)
         // do something on error
         if (response.status === 401) {
           $rootScope.$emit('loginRequired');
