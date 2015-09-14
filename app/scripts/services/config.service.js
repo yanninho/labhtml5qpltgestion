@@ -1,5 +1,5 @@
 angular.module('config', [])
 
-.constant('ENV', {name:'development',urlBackend:'http://localhost:9000',logosPath:'/static/images/logosMarques/'})
+.constant('ENV', {name:'production',urlBackend:'http://labhtml5qpltbackend.herokuapp.com',logosPath:'/static/images/logosMarques/'})
 
 ;
