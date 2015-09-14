@@ -14,7 +14,58 @@
     }
     .map {
     	text-align: right;
+      height: 180px;
     }
     background-color: white;  
   }
+}
+
+.magasin-animate {
+  .map {
+    height: 180px;
+  }
+  
+}
+
+.magasin-animate.ng-move,
+.magasin-animate.ng-enter,
+.magasin-animate.ng-leave {
+  transition:all linear 0.6s;
+}
+
+.magasin-animate.ng-leave.ng-leave-active,
+.magasin-animate.ng-move,
+.magasin-animate.ng-enter {
+  opacity:0;
+}
+
+.magasin-animate.ng-leave,
+.magasin-animate.ng-move.ng-move-active,
+.magasin-animate.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
+
+.magasin-animate-next.ng-leave.ng-leave-active,
+.magasin-animate-next.ng-move,
+.magasin-animate-next.ng-enter {
+  left: 100%;
+}
+
+.magasin-animate-next.ng-leave,
+.magasin-animate-next.ng-move.ng-move-active,
+.magasin-animate-next.ng-enter.ng-enter-active {
+  left: 0;
+}
+
+.magasin-animate-prev.ng-leave.ng-leave-active,
+.magasin-animate-prev.ng-move,
+.magasin-animate-prev.ng-enter {
+  right: 100%;
+}
+
+.magasin-animate-prev.ng-leave,
+.magasin-animate-prev.ng-move.ng-move-active,
+.magasin-animate-prev.ng-enter.ng-enter-active {
+  right: 0;
 }

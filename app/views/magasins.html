@@ -1,12 +1,12 @@
 <md-list class="magasins" ng-if="result">
   <md-subheader class="md-no-sticky pagination">
-  	<md-button class="md-raised" ng-click="setPage('firstPage')">First</md-button>
-  	<md-button class="md-raised" ng-disabled="!result.previousPage" ng-click="setPage('previousPage')">Previous</md-button>
+  	<md-button class="md-raised" ng-click="magasinDirection = 'prev' ; setPage('firstPage')">First</md-button>
+  	<md-button class="md-raised" ng-disabled="!result.previousPage" ng-click="magasinDirection = 'prev' ; setPage('previousPage')">Previous</md-button>
     <span>{{result.beginResult + 1}} à {{result.endResult + 1}} sur {{result.totalRecords}}</span>
-  	<md-button class="md-raised" ng-disabled="!result.nextPage" ng-click="setPage('nextPage')">Next</md-button>
-  	<md-button class="md-raised" ng-click="setPage('lastPage')">Last</md-button>
+  	<md-button class="md-raised" ng-disabled="!result.nextPage" ng-click="magasinDirection = 'next' ; setPage('nextPage')">Next</md-button>
+  	<md-button class="md-raised" ng-click="magasinDirection = 'next' ; setPage('lastPage')">Last</md-button>
   </md-subheader>
-  <md-list-item class="magasin md-whiteframe-z2 md-2-line" ng-repeat="magasin in result.data">
+  <md-list-item  ng-class="{'magasin-animate-prev': magasinDirection == 'prev', 'magasin-animate-next': magasinDirection == 'next'}" class="magasin-animate magasin md-whiteframe-z2 md-2-line" ng-repeat="magasin in result.data">
 	  <img ng-src="{{env.urlBackend}}{{env.logosPath}}{{magasin.marque.logo}}" class="md-avatar" alt="{{magasin.marque.nom}}" />
     <div class="md-list-item-text" layout="row" layout-sm="column" layout-md="column" layout-margin layout-fill layout-padding>
       <div flex class="infos">

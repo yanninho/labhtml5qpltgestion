@@ -12,6 +12,7 @@ angular.module('qpltgestion')
     $scope.env = ENV;
     $scope.rangeNumber = 50;
   	$scope.loading = true;
+    $scope.magasinDirection = 'prev';
   	var easyConfig = happyRestService.getEasyConfig();
     easyConfig.url = ENV.urlBackend + '/v2/magasins';
     //range
