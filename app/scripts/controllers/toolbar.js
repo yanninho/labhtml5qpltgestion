@@ -37,23 +37,27 @@ angular.module('qpltgestion')
     $scope.session = session;
 
     $scope.login = function() {
-      closeNav();
+      //closeNav();
       $location.path('/login');
     };
 
     $scope.logout = function() {
-      closeNav();
+      //closeNav();
       session.clear();
       $location.path('/');
     };
 
     $scope.signup = function() {
-      closeNav();
+      //closeNav();
       $location.path('/signup');
     };
 
     $scope.closeNav = function() {
-      closeNav();
+      //closeNav();
+    }
+
+    $scope.go = function(path) {
+      $location.path(path);
     }
 
   });
