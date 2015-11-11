@@ -21,7 +21,8 @@ angular
     'happyRestClient',
     'config',
     'ngMaterial',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'infinite-scroll'
   ])
   .config(function ($routeProvider, $httpProvider, $locationProvider, localStorageServiceProvider) {
     localStorageServiceProvider

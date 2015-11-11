@@ -57,6 +57,7 @@ angular.module('qpltgestion')
     }
 
     $scope.go = function(path) {
+      $location.search('token', null);
       $location.path(path);
     }
 

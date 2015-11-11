@@ -3,8 +3,13 @@
 	margin: 0 auto;
 	padding-top: 70px;
 	background-color: white;
-  .pagination {
-    text-align: center;
+  .header {
+    md-select, md-input-container .md-input {
+      margin: 0 !important; 
+    }
+    .pagination {
+      text-align: center;
+    }
   }
   .magasin {
     margin: 20px;

@@ -1,21 +1,89 @@
 <md-list class="magasins" ng-if="result">
-  <md-subheader class="md-no-sticky pagination">
-  	<md-button class="md-raised" ng-click="magasinDirection = 'prev' ; setPage('firstPage')">First</md-button>
-  	<md-button class="md-raised" ng-disabled="!result.previousPage" ng-click="magasinDirection = 'prev' ; setPage('previousPage')">Previous</md-button>
-    <span>{{result.beginResult + 1}} à {{result.endResult + 1}} sur {{result.totalRecords}}</span>
-  	<md-button class="md-raised" ng-disabled="!result.nextPage" ng-click="magasinDirection = 'next' ; setPage('nextPage')">Next</md-button>
-  	<md-button class="md-raised" ng-click="magasinDirection = 'next' ; setPage('lastPage')">Last</md-button>
-  </md-subheader>
-  <md-list-item  ng-class="{'magasin-animate-prev': magasinDirection == 'prev', 'magasin-animate-next': magasinDirection == 'next'}" class="magasin-animate magasin md-whiteframe-z2 md-2-line" ng-repeat="magasin in result.data">
-	  <img ng-src="{{env.urlBackend}}{{env.logosPath}}{{magasin.marque.logo}}" class="md-avatar" alt="{{magasin.marque.nom}}" />
-    <div class="md-list-item-text" layout="row" layout-sm="column" layout-md="column" layout-margin layout-fill layout-padding>
-      <div flex class="infos">
-        <h3>{{ magasin.adresse }}</h3>
-        <p>{{ magasin.marque.nom }}</p>        
-      </div>	  	
-      <div flex class="map">
-        <img ng-src="http://staticmap.openstreetmap.de/staticmap.php?center=46.52863469527167,2.43896484375&zoom=4&size=180x180&maptype=osmarenderer&markers={{magasin.location[1]}},{{magasin.location[0]}},lightblue" />
+  <div class="header" layout="row" layout-sm="column" layout-padding layout-margin>
+    <md-whiteframe flex layout="row" class="md-whiteframe-z2">
+      <div flex="10">
+        <md-icon class="mdi" md-font-icon="mdi-format-line-spacing"></md-icon>
       </div>
-	  </div>          
-  </md-list-item>
+      <div flex>
+        <div>
+          <md-select 
+            placeholder="Défilement" 
+            ng-model="selectedDefilement" ng-change="changeDefilement(selectedDefilement)">
+              <md-option ng-value="defilement.value" ng-repeat="defilement in defilements">{{defilement.text}}</md-option>
+          </md-select>            
+        </div>
+        <div class="infinite" ng-hide="selectedDefilement == 'page'">
+          <p>Chargement dynamique : faites simplement défiler la liste, les éléments se chargent au fur et à mesure.</p>
+        </div>
+        <div class="pagination" ng-show="selectedDefilement == 'page'">
+          <md-button class="md-icon-button" ng-click="magasinDirection = 'prev' ; setPage('firstPage')">
+            <md-icon class="mdi" md-font-icon="mdi-arrow-left-bold"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" ng-disabled="!result.previousPage" ng-click="magasinDirection = 'prev' ; setPage('previousPage')">
+            <md-icon class="mdi" md-font-icon="mdi-arrow-left"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" ng-disabled="!result.nextPage" ng-click="magasinDirection = 'next' ; setPage('nextPage')">
+            <md-icon class="mdi" md-font-icon="mdi-arrow-right"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" ng-click="magasinDirection = 'next' ; setPage('lastPage')">
+            <md-icon class="mdi" md-font-icon="mdi-arrow-right-bold"></md-icon>
+          </md-button>
+          <md-select 
+            placeholder="Nombre par page" 
+            ng-model="rangeNumber" ng-change="changeRange(rangeNumber)">
+              <md-option ng-value="range" ng-repeat="range in ranges">{{range}}</md-option>
+          </md-select>           
+          <p><span>{{result.beginResult + 1}} à {{result.endResult + 1}} sur {{result.totalRecords}}</span></p>            
+        </div>
+
+      </div>    
+    </md-whiteframe>
+    <md-whiteframe flex layout="row" class="md-whiteframe-z2">
+      <div flex="10">
+        <md-icon class="mdi" md-font-icon="mdi-filter"></md-icon>
+      </div>
+      <div flex>
+        <md-select 
+          placeholder="Marques" 
+          ng-model="selectedMarque" 
+          ng-change="changedMarque(selectedMarque)" 
+          md-on-open="getMarques()">
+            <md-option ng-value="marque.nom" ng-repeat="marque in marques">{{marque.nom}}</md-option>
+        </md-select>         
+        <md-button ng-click="changedMarque(null)">Effacer</md-button>
+      </div>
+    </md-whiteframe>
+    <md-whiteframe flex layout="row" class="md-whiteframe-z2">
+      <div flex="10">
+        <md-icon class="mdi" md-font-icon="mdi-magnify"></md-icon>
+      </div>
+      <md-input-container flex>
+        <input placeholder="Recherche" ng-model="search" ng-change="sendSearch(search)" ng-disabled="loading">                
+      </md-input-container>
+    </md-whiteframe>
+  </div>   
+  <div 
+    infinite-scroll="infiniteNextPage()" 
+    infinite-scroll-distance="0">
+      <md-list-item
+        ng-class="{'magasin-animate-prev': magasinDirection == 'prev', 'magasin-animate-next': magasinDirection == 'next'}" 
+        class="magasin-animate magasin md-whiteframe-z2 md-2-line" 
+        ng-repeat="magasin in result.data">
+        <img ng-src="{{env.urlBackend}}{{env.logosPath}}{{magasin.marque.logo}}" class="md-avatar" alt="{{magasin.marque.nom}}" />
+        <div class="md-list-item-text" layout="row" layout-sm="column" layout-md="column" layout-margin layout-fill layout-padding>
+          <div flex class="infos">
+            <h3>{{ magasin.adresse }}</h3>
+            <p>{{ magasin.marque.nom }}</p>        
+          </div>      
+          <div flex class="map">
+            <img ng-src="http://staticmap.openstreetmap.de/staticmap.php?center=46.52863469527167,2.43896484375&zoom=4&size=180x180&maptype=osmarenderer&markers={{magasin.location[1]}},{{magasin.location[0]}},lightblue" />
+          </div>
+        </div>          
+      </md-list-item>
+  </div>
+  <div layout="row" flex layout-align="center center" ng-show="loading">
+    <div>
+      <md-progress-circular md-mode="indeterminate" md-diameter="40"></md-progress-circular>      
+    </div>
+  </div> 
 </md-list>
